@@ -20,20 +20,24 @@ export default function TodoList({ token, setToken, username }) {
   const [editDescription, setEditDescription] = useState("");
   const [editStatus, setEditStatus] = useState("");
 
+  // Fetch todos safely
   useEffect(() => {
     const fetchTodos = async () => {
       try {
         const res = await api.get("/todos", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setTodos(res.data);
+        const todosArray = Array.isArray(res.data) ? res.data : res.data.todos || [];
+        setTodos(todosArray);
       } catch (err) {
         console.error("Error fetching todos:", err);
+        setTodos([]);
       }
     };
     if (token) fetchTodos();
   }, [token]);
 
+  // Reminders notification
   useEffect(() => {
     const interval = setInterval(() => {
       todos.forEach(todo => {
@@ -132,7 +136,8 @@ export default function TodoList({ token, setToken, username }) {
     setToken(null);
   };
 
-  const filteredTodos = todos
+  // Safe filtering
+  const filteredTodos = (todos || [])
     .filter(todo => todo.title.toLowerCase().includes(search.toLowerCase()))
     .filter(todo => !filterStatus || todo.status === filterStatus);
 
