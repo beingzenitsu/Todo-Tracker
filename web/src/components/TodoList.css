@@ -1,0 +1,240 @@
+/* ===== TodoList.css ===== */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.todo-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s, color 0.3s;
+}
+
+.todo-container.light {
+  background: #fefefe;
+  color: #222;
+}
+
+.todo-container.dark {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+
+.todo-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.todo-nav h1 {
+  margin: 0;
+}
+
+.todo-nav button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.todo-nav button:hover {
+  opacity: 0.85;
+}
+
+/* ===== Add Task Row ===== */
+.todo-add-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.todo-add-row input,
+.todo-add-row select,
+.todo-add-row button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.todo-add-row button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.todo-add-row button:hover {
+  background: #0056b3;
+}
+
+/* ===== Search & Filter ===== */
+.todo-search-filter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.todo-search-filter input,
+.todo-search-filter select {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ===== Stats ===== */
+.todo-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* ===== Todo List ===== */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.todo-item.completed {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+.todo-item:hover {
+  transform: scale(1.01);
+}
+
+.todo-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.todo-view div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.todo-view strong {
+  font-size: 16px;
+}
+
+.todo-view .desc {
+  font-size: 13px;
+  color: gray;
+}
+
+.todo-view span.category {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-right: 4px;
+}
+
+.todo-view span.due-date {
+  font-size: 12px;
+  color: #ff4d4f;
+}
+
+.todo-view span.priority {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-right: 4px;
+}
+
+.todo-view span.status {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  text-transform: capitalize;
+}
+
+/* ===== Edit Mode ===== */
+.todo-editing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.todo-editing input,
+.todo-editing select,
+.todo-editing button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.todo-editing button {
+  background: #28a745;
+  color: #fff;
+  border: none;
+}
+
+.todo-editing button:hover {
+  background: #1e7e34;
+}
+
+.todo-editing .cancel-btn {
+  background: #dc3545;
+}
+
+.todo-editing .cancel-btn:hover {
+  background: #a71d2a;
+}
+
+/* ===== Category Colors ===== */
+.category.general { background: #d0eaff; color: #0056b3; }
+.category.work { background: #fff3cd; color: #856404; }
+.category.personal { background: #d4edda; color: #155724; }
+.category.urgent { background: #f8d7da; color: #721c24; }
+
+/* ===== Priority Colors ===== */
+.priority.low { background: #d1ecf1; color: #0c5460; }
+.priority.medium { background: #ffeeba; color: #856404; }
+.priority.high { background: #f5c6cb; color: #721c24; }
+
+/* ===== Status Colors ===== */
+.status.todo { background: #e2e3e5; color: #6c757d; }
+.status.in_progress { background: #fff3cd; color: #856404; }
+.status.done { background: #d4edda; color: #155724; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .todo-add-row, .todo-editing {
+    flex-direction: column;
+  }
+  .todo-view {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .todo-view div:last-child {
+    margin-top: 8px;
+  }
+}
