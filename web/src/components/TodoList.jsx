@@ -20,7 +20,7 @@ export default function TodoList({ token, setToken, username }) {
   const [editDescription, setEditDescription] = useState("");
   const [editStatus, setEditStatus] = useState("");
 
-  // Fetch todos safely
+ 
   useEffect(() => {
     const fetchTodos = async () => {
       try {
@@ -37,7 +37,7 @@ export default function TodoList({ token, setToken, username }) {
     if (token) fetchTodos();
   }, [token]);
 
-  // Reminders notification
+
   useEffect(() => {
     const interval = setInterval(() => {
       todos.forEach(todo => {
@@ -136,7 +136,7 @@ export default function TodoList({ token, setToken, username }) {
     setToken(null);
   };
 
-  // Safe filtering
+
   const filteredTodos = (todos || [])
     .filter(todo => todo.title.toLowerCase().includes(search.toLowerCase()))
     .filter(todo => !filterStatus || todo.status === filterStatus);
@@ -166,7 +166,7 @@ export default function TodoList({ token, setToken, username }) {
         </div>
       </nav>
 
-      {/* Add Task Section */}
+  
       <div className="todo-add-row">
         <input
           value={newTitle}
@@ -198,7 +198,7 @@ export default function TodoList({ token, setToken, username }) {
         <button onClick={addTodo}>Add</button>
       </div>
 
-      {/* Search & Filter */}
+   
       <div className="todo-search-filter">
         <input
           value={search}
@@ -213,14 +213,14 @@ export default function TodoList({ token, setToken, username }) {
         </select>
       </div>
 
-      {/* Stats */}
+     
       <div className="todo-stats">
         <span>Total: {total}</span>
         <span>Completed: {completed}</span>
         <span>Pending: {pending}</span>
       </div>
 
-      {/* Task List */}
+   
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="todos">
           {(provided) => (

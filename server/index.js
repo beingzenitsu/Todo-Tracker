@@ -16,7 +16,7 @@ const port = process.env.PORT || 4000;
 app.use(express.json()); 
 app.use(cookieParser());
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: ["http://localhost:5173", "http://localhost:5174", "https://your-frontend-name.onrender.com"],
     credentials: true
 }));
 app.use(morgan("dev"));
