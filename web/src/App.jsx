@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
 import TodoList from "./components/TodoList";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [username, setUsername] = useState(localStorage.getItem("username") || "");
+
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) setUsername(storedUsername);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -13,10 +19,13 @@ function App() {
     setUsername("");
   };
 
-  if (!token) return <LoginForm setToken={setToken} setUsername={setUsername} />;
+  if (!token) {
+    return <LoginForm setToken={setToken} setUsername={setUsername} />;
+  }
 
   return (
     <div style={{ textAlign: "center", marginTop: "2rem" }}>
+     
       <div
         style={{
           position: "absolute",
@@ -28,7 +37,7 @@ function App() {
         }}
       >
         <span style={{ color: "white", fontWeight: "bold" }}>
-          Welcome, {username}
+          Welcome{username ? `, ${username}` : ""}!
         </span>
         <button
           onClick={handleLogout}
@@ -44,6 +53,7 @@ function App() {
           Logout
         </button>
       </div>
+
       <h1>Todo Tracker</h1>
       <TodoList token={token} />
     </div>
