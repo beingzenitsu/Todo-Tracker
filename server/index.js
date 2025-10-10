@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.js";
-import todoRoutes from "./routes/Todo.js";
+import todoRoutes from "./routes/todo.js";
 
 dotenv.config();
 
